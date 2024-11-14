@@ -4,7 +4,7 @@ const Category = ({category}) => {
     
     return (
         <div >
-            <h1 className=' btn w-full mt-2'>{category.category_name}</h1>
+            <h1 className=' btn w-full mt-2 bg-white'>{category.category_name}</h1>
         </div>
     );
 };
