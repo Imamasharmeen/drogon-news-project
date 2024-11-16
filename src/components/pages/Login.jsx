@@ -1,11 +1,36 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../Provider/AuthProvider";
 
 const Login = () => {
+  const { createUserLogin, setUser } = useContext(AuthContext);
+  const handelLogin = (e) => {
+    e.preventDefault();
+
+    const form = new FormData(e.target);
+
+    const email = form.get("email");
+    const password = form.get("password");
+    console.log({ email, password });
+
+    createUserLogin(email, password)
+      .then((result) => {
+        const user = result.user;
+        setUser(user);
+        console.log(user);
+      })
+      .catch((error) => {
+        //const errorCode = error.Code;
+        //const errorMessage = error.message;
+        //console.log(errorCode, errorMessage);
+        alert(error.code)
+      });
+  };
   return (
     <div>
       <div>
         <h2 className="text-3xl my-10 text-center">Please Login</h2>
-        <form className=" md:w-3/4 lg:w-1/2 mx-auto">
+        <form onSubmit={handelLogin} className=" md:w-3/4 lg:w-1/2 mx-auto">
           <div className="form-control">
             <label className="label">
               <span className="label-text">Email</span>
