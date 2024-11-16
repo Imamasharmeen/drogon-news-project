@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
 
 const Register = () => {
-  const { createUser, user, setUser } = useContext(AuthContext);
+  const { createUser,  setUser } = useContext(AuthContext);
 
   const handleRegister = (e) => {
     e.preventDefault();
@@ -23,7 +23,7 @@ const Register = () => {
         console.log(user)
       })
       .catch((error) => {
-        const errorCode = error.errorCode;
+        const errorCode = error.Code;
         const errorMessage = error.message
         console.log(errorCode, errorMessage);
       });
@@ -43,6 +43,7 @@ const Register = () => {
               name="name"
               placeholder="Name"
               className="input input-bordered"
+              autoComplete="current-password"
             />
           </div>
           <div className="form-control">
@@ -55,6 +56,7 @@ const Register = () => {
               name="photo"
               placeholder="Photo URL"
               className="input input-bordered"
+              autoComplete="current-password"
             />
           </div>
           <div className="form-control">
@@ -67,6 +69,7 @@ const Register = () => {
               name="email"
               placeholder="Email"
               className="input input-bordered"
+              autoComplete="current-password"
             />
           </div>
           <div className="form-control">
@@ -79,6 +82,7 @@ const Register = () => {
               name="password"
               placeholder="Password"
               className="input input-bordered"
+              autoComplete="current-password"
             />
             <label className="label">
               <a href="#" className="label-text-alt link link-hover">
