@@ -4,6 +4,7 @@ import FindUs from "./FindUs";
 const RightNavbar = () => {
     return (
         <div>
+            <h1 className="text-2xl font-bold my-3" >Login With</h1>
             <button className="w-full bg-white mb-2 btn flex gap-2 items-center"><FaGoogle />Login with google
             </button>
             <button className="w-full bg-white btn flex gap-2 items-center"><FaFacebook />Login with google
