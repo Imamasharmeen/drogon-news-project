@@ -1,9 +1,10 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
 
 const Login = () => {
   const { createUserLogin, setUser } = useContext(AuthContext);
+  const [error, setError]= useState({})
   const location = useLocation()
   const Navigate = useNavigate()
 
@@ -23,11 +24,8 @@ const Login = () => {
         Navigate(location?.state? location.state: '/')
         
       })
-      .catch((error) => {
-        //const errorCode = error.Code;
-        //const errorMessage = error.message;
-        //console.log(errorCode, errorMessage);
-        alert(error.code)
+      .catch((err) => {
+        setError({...error , login:err.code})
       });
   };
   return (
@@ -58,6 +56,11 @@ const Login = () => {
               placeholder="Password"
               className="input input-bordered"
             />
+            {error.login && (
+                <label className="text-sm text-red-500">
+                    {error.login}
+                </label>
+            )}
             <label className="label">
               <a href="#" className="label-text-alt link link-hover">
                 Forgot password?

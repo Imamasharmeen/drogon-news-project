@@ -22,6 +22,9 @@ const AuthProvider = ({children}) => {
         setLoading(true)
         return signOut(auth)
     }
+    const updateUserProfile =(updatedData)=>{
+        return updateProfile (auth.currentUser, updatedData)
+    };
 
     const authInfo ={
         user,
@@ -29,7 +32,8 @@ const AuthProvider = ({children}) => {
         createUser,
         logOut,
         createUserLogin,
-        loading
+        loading,
+        updateUserProfile
         
     };
     useEffect(()=>{
